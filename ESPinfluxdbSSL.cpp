@@ -21,7 +21,6 @@ DB_RESPONSE InfluxdbSSL::opendb(String db, String user, String password) {
         //_db = db + "&u=" + user + "&p=" + password;
         HTTPClient http;
         http.begin("https://" + _host + ":" + _port + "/query?q=show%20databases" + "&u=" + user + "&p=" + password, _fingerprint); //HTTP
-//        const char* fingerprint = "40 79 4F 58 AF 71 51 E4 65 C8 0D BF D8 21 18 7E DE 2D 09 C3";
         int httpCode = http.GET();
         if (httpCode == 200) {
                 _response = DB_SUCCESS;
@@ -41,7 +40,6 @@ DB_RESPONSE InfluxdbSSL::opendb(String db, String user, String password) {
 DB_RESPONSE InfluxdbSSL::opendb(String db) {
 
         HTTPClient http;
-//        const char* fingerprint = "40 79 4F 58 AF 71 51 E4 65 C8 0D BF D8 21 18 7E DE 2D 09 C3";
         http.begin("https://" + _host + ":" + _port + "/query?q=show%20databases", _fingerprint); //HTTP
 
         int httpCode = http.GET();
@@ -70,7 +68,6 @@ DB_RESPONSE InfluxdbSSL::write(String data) {
         HTTPClient http;
 
         DEBUG_PRINT("HTTP post begin...");
-//        const char* fingerprint = "40 79 4F 58 AF 71 51 E4 65 C8 0D BF D8 21 18 7E DE 2D 09 C3";
         http.begin("https://" + _host + ":" + _port + "/write?db=" + _db, _fingerprint); //HTTP
         http.addHeader("Content-Type", "text/plain");
 
@@ -102,7 +99,6 @@ DB_RESPONSE InfluxdbSSL::query(String sql) {
         DEBUG_PRINT(url);
 
         HTTPClient http;
-//        const char* fingerprint = "40 79 4F 58 AF 71 51 E4 65 C8 0D BF D8 21 18 7E DE 2D 09 C3";
         http.begin("https://" + _host + ":" + _port + url, _fingerprint); //HTTP
 
 
